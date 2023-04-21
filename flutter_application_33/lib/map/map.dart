@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_33/map/CustomMarker.dart';
 import 'package:get/get.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
@@ -47,6 +48,10 @@ class _MapViewState extends State<MapView> {
   List<LatLng> polylineCoordinates = [];
 
   final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  //Added by Vansh
+  LatLng initialLocation = const LatLng(37.422131, 77.312706);
+  BitmapDescriptor markerIcon = BitmapDescriptor.defaultMarker;
 
   Widget _textField({
     required TextEditingController controller,
@@ -141,6 +146,18 @@ class _MapViewState extends State<MapView> {
     }
   }
 
+  // void addCustomIcon() {
+  //   BitmapDescriptor.fromAssetImage(
+  //           const ImageConfiguration(), "assets/Location_marker.png")
+  //       .then(
+  //     (icon) {
+  //       setState(() {
+  //         markerIcon = icon;
+  //       });
+  //     },
+  //   );
+  // }
+
   Future<dynamic> addCurrentLocationMark() async {
     setState(() {
       markers.add(Marker(
@@ -225,12 +242,13 @@ class _MapViewState extends State<MapView> {
     await addDestinationMark();
     calculateDistance();
     getPolyline();
+    // MapScreen();
     // getPolyPoints();
   }
 
   Future getAllPotholes() async {
     QuerySnapshot querySnapshot =
-        await FirebaseFirestore.instance.collection('potholes').get();
+        await FirebaseFirestore.instance.collection('Vendors').get();
 
     for (int i = 0; i < querySnapshot.docs.length; i++) {
       markers.add(Marker(
@@ -413,7 +431,7 @@ class _MapViewState extends State<MapView> {
   void initState() {
     super.initState();
     _getCurrentLocation();
-    getAllPotholes();
+    // getAllPotholes();
   }
 
   @override

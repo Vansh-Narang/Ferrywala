@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_33/map/MapScreen.dart';
 import 'package:flutter_application_33/map/map.dart';
 import 'package:flutter_application_33/map/sample/xyz.dart';
 
@@ -24,6 +25,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: MapView());
+        home: MapScreen());
   }
 }
