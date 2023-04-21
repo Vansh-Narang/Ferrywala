@@ -7,6 +7,7 @@ import 'package:geocoding/geocoding.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapScreen extends StatefulWidget {
@@ -50,6 +51,42 @@ class _MapScreenState extends State<MapScreen> {
             markerId: MarkerId(querySnapshot.docs[i]['company']),
             position: LatLng(querySnapshot.docs[i]['location'].latitude,
                 querySnapshot.docs[i]['location'].longitude),
+            onTap: () {
+              showModalBottomSheet(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                context: context,
+                builder: (context) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              child: Text(
+                                querySnapshot.docs[i]['category'],
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                            Container(
+                              child: Text(
+                                "Contact Vendor" +
+                                    querySnapshot.docs[i]['contactno'],
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  );
+                },
+              );
+            },
             infoWindow: InfoWindow(title: querySnapshot.docs[i]['category']),
             icon: BitmapDescriptor.defaultMarker),
       );
