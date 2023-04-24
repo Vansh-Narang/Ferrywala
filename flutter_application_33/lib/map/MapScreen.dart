@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:flutter_application_33/bottomnav/bottomnavy.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:custom_marker/marker_icon.dart';
@@ -93,18 +95,6 @@ class _MapScreenState extends State<MapScreen> {
     }
   }
 
-  // void addCustomIcon() {
-  //   BitmapDescriptor.fromAssetImage(
-  //           const ImageConfiguration(), "assets/Location_marker.png")
-  //       .then(
-  //     (icon) {
-  //       setState(() {
-  //         markerIcon1 = icon;
-  //       });
-  //     },
-  //   );
-  // }
-
   Future<dynamic> addCurrentLocationMark() async {
     setState(() {
       markers.add(
@@ -134,12 +124,7 @@ class _MapScreenState extends State<MapScreen> {
                 builder: (context) {
                   return Column(
                     children: [
-                      SizedBox(height: 10),
-                      // TextButton(
-                      //     onPressed: () {
-                      //       _makingPhoneCall();
-                      //     },
-                      //     child: Text('Contact the Vendor')),
+                      const SizedBox(height: 10),
                       ListTile(
                         onTap: () async {
                           _makingPhoneCall(querySnapshot.docs[i]['contactno']);
@@ -201,7 +186,10 @@ class _MapScreenState extends State<MapScreen> {
                 },
               );
             },
-            infoWindow: InfoWindow(title: querySnapshot.docs[i]['category']),
+            infoWindow: InfoWindow(
+                title: querySnapshot.docs[i]['category'],
+                snippet:
+                    querySnapshot.docs[i]['rating'] + '🌟' + " " + "Rating"),
             icon: BitmapDescriptor.defaultMarker),
       );
     }
