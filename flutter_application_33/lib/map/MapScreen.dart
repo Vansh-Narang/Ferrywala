@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:custom_marker/marker_icon.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_application_33/map/sample/xyz.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
@@ -20,29 +22,101 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
+  BitmapDescriptor markerIcon1 = BitmapDescriptor.defaultMarker;
+  String _startAddress = '';
+  final startAddressController = TextEditingController();
+  late Position _currentPosition;
+  String _currentAddress = '';
   Set<Marker> markers = {};
   TextEditingController _date = TextEditingController();
   late GoogleMapController mapController;
   var currlocation;
   var clients = [];
-  //final Completer<GoogleMapController> _controller = Completer();
-  static const LatLng source = LatLng(30.166810, 77.309800);
+  final CameraPosition _initialLocation =
+      const CameraPosition(target: LatLng(28.7041, 77.1025));
+  final Completer<GoogleMapController> _controller = Completer();
+  static const LatLng source = LatLng(28.7041, 77.1025);
   static const LatLng dest = LatLng(30.167319, 77.311288);
+  // BitmapDescriptor markerIcon = BitmapDescriptor.defaultMarker;
 
-  BitmapDescriptor markerIcon = BitmapDescriptor.defaultMarker;
+  _getCurrentLocation() async {
+    bool serviceenabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceenabled) {
+      return Future.error("Disabled");
+    }
+    LocationPermission permission = await Geolocator.requestPermission();
+    if (permission == LocationPermission.denied) {
+      return Future.error("denied");
+    } else {
+      await Geolocator.getCurrentPosition(
+              desiredAccuracy: LocationAccuracy.high)
+          .then((Position position) async {
+        setState(() {
+          _currentPosition = position;
+          // print('CURRENT POS: $_currentPosition');
+          mapController.animateCamera(
+            CameraUpdate.newCameraPosition(
+              CameraPosition(
+                target: LatLng(position.latitude, position.longitude),
+                zoom: 18.0,
+              ),
+            ),
+          );
+        });
+        await _getAddress();
+        addCurrentLocationMark();
+      }).catchError((e) {
+        if (kDebugMode) {
+          print(e);
+        }
+      });
+    }
+  }
+
+  _getAddress() async {
+    try {
+      List<Placemark> p = await placemarkFromCoordinates(
+          _currentPosition.latitude, _currentPosition.longitude);
+
+      Placemark place = p[0];
+
+      setState(() {
+        _currentAddress =
+            "${place.name}, ${place.locality}, ${place.postalCode}, ${place.country}";
+        startAddressController.text = _currentAddress;
+        _startAddress = _currentAddress;
+      });
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+    }
+  }
 
   // void addCustomIcon() {
   //   BitmapDescriptor.fromAssetImage(
-  //     const ImageConfiguration(),
-  //     "assets/maps-and-flags.png",
-  //   ).then(
+  //           const ImageConfiguration(), "assets/Location_marker.png")
+  //       .then(
   //     (icon) {
   //       setState(() {
-  //         markerIcon = icon;
+  //         markerIcon1 = icon;
   //       });
   //     },
   //   );
   // }
+
+  Future<dynamic> addCurrentLocationMark() async {
+    setState(() {
+      markers.add(
+        Marker(
+            infoWindow: const InfoWindow(title: "My Location"),
+            markerId: const MarkerId('startPosition'),
+            position:
+                LatLng(_currentPosition.latitude, _currentPosition.longitude),
+            icon: BitmapDescriptor.defaultMarker),
+      );
+    });
+  }
 
   Future getallVendors() async {
     QuerySnapshot querySnapshot =
@@ -55,8 +129,6 @@ class _MapScreenState extends State<MapScreen> {
             position: LatLng(querySnapshot.docs[i]['location'].latitude,
                 querySnapshot.docs[i]['location'].longitude),
             onTap: () {
-              const xyz();
-              // );
               showModalBottomSheet(
                 context: context,
                 builder: (context) {
@@ -114,7 +186,9 @@ class _MapScreenState extends State<MapScreen> {
                               },
                             );
                           },
-                          child: Text("Order Now")),
+                          child: Text("Order Now" +
+                              " " +
+                              querySnapshot.docs[i]['category'])),
                     ],
                   );
                 },
@@ -129,6 +203,8 @@ class _MapScreenState extends State<MapScreen> {
   @override
   void initState() {
     super.initState();
+    _getCurrentLocation();
+    _getCurrentLocation();
     getallVendors();
   }
 
@@ -136,29 +212,34 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: GoogleMap(
-          initialCameraPosition: CameraPosition(
-            target: source,
-            zoom: 12,
-          ),
-          markers: Set<Marker>.from(markers)
-          // Marker(
-          //custom marker
-          //     markerId: MarkerId("src"),
-          //     position: source,
-          //     draggable: true,
-          //     onDragEnd: (value) {
-          //       //value is new position if dragged
-          //     },
-          //     icon: BitmapDescriptor.defaultMarker),
-          // Marker(
-          //     markerId: MarkerId("Dest"),
-          //     position: dest,
-          //     draggable: true,
-          //     onDragEnd: (value) {
-          //       //value is new position if dragged
-          //     },
-          //     icon: BitmapDescriptor.defaultMarker)
-          ),
+        initialCameraPosition: _initialLocation,
+        markers: Set<Marker>.from(markers),
+        myLocationEnabled: true,
+        myLocationButtonEnabled: false,
+        mapType: MapType.normal,
+        zoomGesturesEnabled: true,
+        zoomControlsEnabled: false,
+        onMapCreated: (GoogleMapController controller) {
+          mapController = controller;
+        },
+        // Marker(
+        //custom marker
+        //     markerId: MarkerId("src"),
+        //     position: source,
+        //     draggable: true,
+        //     onDragEnd: (value) {
+        //       //value is new position if dragged
+        //     },
+        //     icon: BitmapDescriptor.defaultMarker),
+        // Marker(
+        //     markerId: MarkerId("Dest"),
+        //     position: dest,
+        //     draggable: true,
+        //     onDragEnd: (value) {
+        //       //value is new position if dragged
+        //     },
+        //     icon: BitmapDescriptor.defaultMarker)
+      ),
     );
   }
 }

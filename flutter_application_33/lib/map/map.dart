@@ -49,9 +49,9 @@ class _MapViewState extends State<MapView> {
 
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  //Added by Vansh
-  LatLng initialLocation = const LatLng(37.422131, 77.312706);
-  BitmapDescriptor markerIcon = BitmapDescriptor.defaultMarker;
+  // //Added by Vansh
+  // LatLng initialLocation = const LatLng(37.422131, 77.312706);
+  // BitmapDescriptor markerIcon = BitmapDescriptor.defaultMarker;
 
   Widget _textField({
     required TextEditingController controller,
@@ -145,18 +145,6 @@ class _MapViewState extends State<MapView> {
       }
     }
   }
-
-  // void addCustomIcon() {
-  //   BitmapDescriptor.fromAssetImage(
-  //           const ImageConfiguration(), "assets/Location_marker.png")
-  //       .then(
-  //     (icon) {
-  //       setState(() {
-  //         markerIcon = icon;
-  //       });
-  //     },
-  //   );
-  // }
 
   Future<dynamic> addCurrentLocationMark() async {
     setState(() {

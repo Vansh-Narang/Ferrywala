@@ -79,6 +79,9 @@ flutter:
   assets:
     - assets/Location_marker.png
     - assets/maps-and-flags.png
+    - assets/vendor2.PNG
+    - assets/language (2).PNG
+    - assets/language__2.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -1,5 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_33/Login/customer.dart';
+import 'package:flutter_application_33/Login/lang.dart';
+import 'package:flutter_application_33/Login/optionpage.dart';
 import 'package:flutter_application_33/map/MapScreen.dart';
 import 'package:flutter_application_33/map/map.dart';
 import 'package:flutter_application_33/map/sample/xyz.dart';
@@ -25,6 +28,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: MapScreen());
+        home: languageSelection());
   }
 }
