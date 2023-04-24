@@ -30,7 +30,6 @@ class _languageSelectionState extends State<languageSelection> {
                       image: AssetImage('assets/language__2.png'))),
             ),
           ),
-          // Padding(padding: EdgeInsets.only(left: 10)),
           Center(
               child: Text(
             "Choose your language",
@@ -39,7 +38,6 @@ class _languageSelectionState extends State<languageSelection> {
           SizedBox(
             height: 10,
           ),
-
           ElevatedButton(
               style: ElevatedButton.styleFrom(
                 primary: Colors.blueGrey,
@@ -72,26 +70,6 @@ class _languageSelectionState extends State<languageSelection> {
                     MaterialPageRoute(builder: (context) => optionpage()));
               },
               child: Text("हिंदी")),
-
-          // Padding(
-          //   padding: const EdgeInsets.only(left: 25.0, right: 25),
-          //   child: Container(
-          //     padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-          //     decoration: BoxDecoration(
-          //         borderRadius: BorderRadius.circular(25),
-          //         border: Border.all(color: Colors.grey, width: 1)),
-          //     child: DropdownButtonHideUnderline(
-          //       child: DropdownButton<String>(
-          //         value: value,
-          //
-          //         iconSize: 35,
-          //         isExpanded: true,
-          //         items: items.map(buildMenuItem).toList(),
-          //         onChanged: (value) => setState(() => this.value = value),
-          //       ),
-          //     ),
-          //   ),
-          // ),
         ],
       ),
     );
