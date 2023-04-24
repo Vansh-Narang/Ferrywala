@@ -135,18 +135,20 @@ class _MapScreenState extends State<MapScreen> {
                   return Column(
                     children: [
                       SizedBox(height: 10),
-                      TextButton(
-                          onPressed: () {
-                            _makingPhoneCall();
-                          },
-                          child: Text('Contact the Vendor')),
-                      // ListTile(
-                      //   onTap: () {},
-                      //   leading: Icon(
-                      //     Icons.call,
-                      //   ),
-                      //   title: Text("Contact"),
-                      // ),
+                      // TextButton(
+                      //     onPressed: () {
+                      //       _makingPhoneCall();
+                      //     },
+                      //     child: Text('Contact the Vendor')),
+                      ListTile(
+                        onTap: () async {
+                          _makingPhoneCall(querySnapshot.docs[i]['contacts']);
+                        },
+                        leading: Icon(
+                          Icons.call,
+                        ),
+                        title: Text("Contact"),
+                      ),
                       SizedBox(
                         height: 10,
                       ),
@@ -249,9 +251,11 @@ class _MapScreenState extends State<MapScreen> {
   }
 }
 
-_makingPhoneCall() async {
+//Making Phone calls in the text button of contact us button
+_makingPhoneCall(var url) async {
   var url = Uri.parse("tel:9466445533");
   if (await canLaunchUrl(url)) {
+    print("Calling");
     await launchUrl(url);
   } else {
     throw 'Could not launch $url';
