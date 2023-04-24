@@ -8,7 +8,12 @@ CollectionReference users = FirebaseFirestore.instance.collection('Vendors');
 
 Future<void> addUser() {
   return users
-      .add({'full_name': "va", 'company': "google", 'age': "19"})
+      .add({
+        'category': "washer",
+        'none': "none",
+        'conatct': "12345",
+        "location": ""
+      })
       .then((value) => print("User Added"))
       .catchError((error) => print("Failed to add user: $error"));
 }

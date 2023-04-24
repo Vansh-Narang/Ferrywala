@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:url_launcher/url_launcher.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:custom_marker/marker_icon.dart';
 import 'package:flutter/foundation.dart';
@@ -135,13 +135,18 @@ class _MapScreenState extends State<MapScreen> {
                   return Column(
                     children: [
                       SizedBox(height: 10),
-                      ListTile(
-                        onTap: () {
-                          print("called");
-                        },
-                        leading: Icon(Icons.call),
-                        title: Text("Contact"),
-                      ),
+                      TextButton(
+                          onPressed: () {
+                            _makingPhoneCall();
+                          },
+                          child: Text('Contact the Vendor')),
+                      // ListTile(
+                      //   onTap: () {},
+                      //   leading: Icon(
+                      //     Icons.call,
+                      //   ),
+                      //   title: Text("Contact"),
+                      // ),
                       SizedBox(
                         height: 10,
                       ),
@@ -241,5 +246,14 @@ class _MapScreenState extends State<MapScreen> {
         //     icon: BitmapDescriptor.defaultMarker)
       ),
     );
+  }
+}
+
+_makingPhoneCall() async {
+  var url = Uri.parse("tel:9466445533");
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url);
+  } else {
+    throw 'Could not launch $url';
   }
 }

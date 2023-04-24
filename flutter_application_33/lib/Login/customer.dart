@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_33/map/CustomMarker.dart';
+import 'package:flutter_application_33/map/MapScreen.dart';
 import 'package:get/get.dart';
 
 class Customerloginpage extends StatelessWidget {
@@ -133,7 +135,10 @@ class Customerloginpage extends StatelessWidget {
                 horizontal: 40,
               ),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => MapScreen()));
+                },
                 child: Text(
                   'Login'.tr,
                   style: TextStyle(fontSize: 25),
