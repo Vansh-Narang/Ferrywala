@@ -3,6 +3,7 @@ import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 // import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_33/bottomnav/Shops.dart';
+import 'package:flutter_application_33/bottomnav/order.dart';
 import 'package:flutter_application_33/bottomnav/orders.dart';
 import 'package:flutter_application_33/map/CustomMarker.dart';
 import 'package:flutter_application_33/map/MapScreen.dart';
@@ -31,7 +32,7 @@ class NavigationState1 extends State<Navigation1> {
       bodyScreen = Shops();
     }
     if (index == 2) {
-      bodyScreen = Orders();
+      bodyScreen = Order();
     }
   }
 

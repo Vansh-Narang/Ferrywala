@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_33/bottomnav/bottomnavy.dart';
 import 'package:flutter_application_33/bottomnav/orders.dart';
 import 'package:flutter_application_33/firebase_options.dart';
+import 'package:flutter_application_33/splash.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_application_33/Login/customer.dart';
 import 'package:flutter_application_33/Login/lang.dart';
@@ -63,6 +64,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: languageSelection());
+        home: Orders());
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_33/Login/optionpage1.dart';
 import 'package:get/get.dart';
 
 import 'optionpage.dart';
@@ -20,6 +21,16 @@ class _languageSelectionState extends State<languageSelection> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // Padding(padding: EdgeInsets.only(left: 10)),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.40,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/language(2).png'))),
+            ),
+          ),
           Center(
               child: Text(
             "Choose your language",
@@ -30,6 +41,9 @@ class _languageSelectionState extends State<languageSelection> {
           ),
 
           ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blueGrey, // Background color
+              ),
               onPressed: () {
                 var locale = Locale('en', 'US');
                 Get.updateLocale(locale);
@@ -48,11 +62,14 @@ class _languageSelectionState extends State<languageSelection> {
             height: 10,
           ),
           ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blueGrey, // Background color
+              ),
               onPressed: () {
                 var locale = Locale('hi', 'IN');
                 Get.updateLocale(locale);
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => optionpage()));
+                    MaterialPageRoute(builder: (context) => optionpage1()));
               },
               child: Text("हिंदी")),
         ],

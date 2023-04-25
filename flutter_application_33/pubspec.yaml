@@ -71,6 +71,7 @@ dev_dependencies:
   url_launcher: ^6.1.10
   flutter_rating_bar: ^4.0.1
   bottom_nav: ^1.0.1
+  lottie: ^2.3.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -88,8 +89,8 @@ flutter:
     - assets/Location_marker.png
     - assets/maps-and-flags.png
     - assets/vendor2.PNG
-    - assets/language (2).PNG
-    - assets/language__2.png
+    - assets/language(2).png
+    - assets/logo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

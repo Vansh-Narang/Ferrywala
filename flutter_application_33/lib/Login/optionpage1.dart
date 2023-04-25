@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_application_33/Login/custhindi.dart';
 import 'package:flutter_application_33/Login/customer.dart';
 import 'package:flutter_application_33/Login/sigin.dart';
 import 'package:get/get.dart';
@@ -35,7 +36,7 @@ class optionpage1 extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => customerloginpage()));
+                          builder: (context) => customerloginpage1()));
                 },
                 child: Text(
                   'ग्राहक',
