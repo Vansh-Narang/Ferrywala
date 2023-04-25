@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_33/bottomnav/bottomnavy.dart';
+import 'package:flutter_application_33/map/MapScreen.dart';
 import 'package:get/get.dart';
 
-import '../bottomnav/bottomnavy.dart';
-
-class customerloginpage extends StatelessWidget {
-  final List locale = [
-    {'name': 'ENGLISH', 'locale': Locale('en', 'US')},
-    {'name': 'ಕನ್ನಡ', 'locale': Locale('kn', 'IN')},
-    {'name': 'हिंदी', 'locale': Locale('hi', 'IN')},
+class sellerloginpage extends StatelessWidget {
+  sellerloginpage({super.key});
+  final items = [
+    "vegetables".tr,
+    "fruits".tr,
+    "washer".tr,
+    "food".tr,
+    "clothes".tr
   ];
+  TextEditingController customerPhone = TextEditingController();
 
-  get customerPhone => null;
-
+  String? value;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +22,7 @@ class customerloginpage extends StatelessWidget {
       body: ListView(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Container(
               height: MediaQuery.of(context).size.height * 0.40,
               width: MediaQuery.of(context).size.width,
@@ -30,7 +33,7 @@ class customerloginpage extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 42, vertical: 8),
-            child: Text('login'.tr,
+            child: Text("login".tr,
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 28,
@@ -38,8 +41,7 @@ class customerloginpage extends StatelessWidget {
                 )),
           ),
           Padding(
-            padding: const EdgeInsets.only(
-                left: 40.0, right: 40, bottom: 10, top: 10),
+            padding: const EdgeInsets.only(left: 40, right: 40),
             child: TextField(
               controller: customerPhone,
               cursorColor: Colors.black,
@@ -58,9 +60,27 @@ class customerloginpage extends StatelessWidget {
               ),
             ),
           ),
-          // ElevatedButton(
-          //     onPressed: (){},
-          //     child: Text("Search")),
+          SizedBox(
+            height: 13,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 40, right: 40, bottom: 10),
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(25),
+                  border: Border.all(color: Colors.grey, width: 1)),
+              child: DropdownButtonHideUnderline(
+                child: DropdownButton<String>(
+                  value: value,
+                  iconSize: 36,
+                  isExpanded: true,
+                  items: items.map(buildMenuItem).toList(),
+                  onChanged: (value) => setState(() => this.value = value),
+                ),
+              ),
+            ),
+          ),
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.70,
             height: MediaQuery.of(context).size.height * 0.07,
@@ -180,4 +200,13 @@ class customerloginpage extends StatelessWidget {
       ),
     );
   }
+
+  setState(String? Function() param0) {}
 }
+
+DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
+    value: item,
+    child: Text(
+      item,
+      style: TextStyle(fontSize: 20),
+    ));

@@ -7,8 +7,8 @@ import 'package:get/get.dart';
 // import 'package:ferry/loginpage/customer login.dart';
 // import 'package:ferry/loginpage/sellerlogin.dart';
 
-class optionpage extends StatelessWidget {
-  const optionpage({super.key});
+class optionpage1 extends StatelessWidget {
+  const optionpage1({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +21,8 @@ class optionpage extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.40,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('assets/vendor2.PNG'))),
+                  image:
+                      DecorationImage(image: AssetImage('assets/vendor2.PNG'))),
             ),
           ),
           Padding(
@@ -38,7 +38,7 @@ class optionpage extends StatelessWidget {
                           builder: (context) => customerloginpage()));
                 },
                 child: Text(
-                  'customer'.tr,
+                  'ग्राहक',
                   style: TextStyle(fontSize: 20),
                 ),
                 style: ButtonStyle(
@@ -54,7 +54,7 @@ class optionpage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 20),
             child: Container(
-              child: Text("or".tr,
+              child: Text("या".tr,
                   style: TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
@@ -74,7 +74,7 @@ class optionpage extends StatelessWidget {
                           builder: (context) => sellerloginpage()));
                 },
                 child: Text(
-                  'seller'.tr,
+                  'विक्रेता',
                   style: TextStyle(fontSize: 20),
                 ),
                 style: ButtonStyle(

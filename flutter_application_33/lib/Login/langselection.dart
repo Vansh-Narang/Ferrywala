@@ -1,6 +1,4 @@
-// import 'package:ferry/seller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_33/Login/optionpage1.dart';
 import 'package:get/get.dart';
 
 import 'optionpage.dart';
@@ -21,16 +19,6 @@ class _languageSelectionState extends State<languageSelection> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
-            child: Container(
-              height: MediaQuery.of(context).size.height * 0.40,
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                  image:
-                      DecorationImage(image: AssetImage('assets/vendor2.PNG'))),
-            ),
-          ),
           // Padding(padding: EdgeInsets.only(left: 10)),
           Center(
               child: Text(
@@ -64,7 +52,7 @@ class _languageSelectionState extends State<languageSelection> {
                 var locale = Locale('hi', 'IN');
                 Get.updateLocale(locale);
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => optionpage1()));
+                    MaterialPageRoute(builder: (context) => optionpage()));
               },
               child: Text("हिंदी")),
         ],

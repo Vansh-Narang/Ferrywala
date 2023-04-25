@@ -13,12 +13,12 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 // import 'package:login_backend/Screens/person_info.dart';
 // import 'package:login_backend/Screens/search_screen.dart';
 
-class Navigation extends StatefulWidget {
+class Navigation1 extends StatefulWidget {
   @override
-  State<Navigation> createState() => NavigationState();
+  State<Navigation1> createState() => NavigationState1();
 }
 
-class NavigationState extends State<Navigation> {
+class NavigationState1 extends State<Navigation1> {
   int index = 0;
   Widget bodyScreen = MapScreen();
 
