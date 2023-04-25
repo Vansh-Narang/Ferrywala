@@ -67,12 +67,7 @@ class optionpage extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.08,
               width: MediaQuery.of(context).size.width * 0.7,
               child: ElevatedButton(
-                onPressed: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) => sellerloginpage()));
-                },
+                onPressed: () {},
                 child: Text(
                   'Vendor'.tr,
                   style: TextStyle(fontSize: 20),

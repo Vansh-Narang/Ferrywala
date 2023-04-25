@@ -3,6 +3,8 @@ import 'package:flutter_application_33/map/CustomMarker.dart';
 import 'package:flutter_application_33/map/MapScreen.dart';
 import 'package:get/get.dart';
 
+import '../bottomnav/bottomnavy.dart';
+
 class Customerloginpage extends StatelessWidget {
   final List locale = [
     {'name': 'ENGLISH', 'locale': Locale('en', 'US')},
@@ -122,7 +124,7 @@ class Customerloginpage extends StatelessWidget {
               left: 40,
               bottom: 20,
             ),
-            child: Text("Forget Password".tr,
+            child: Text("Forget Password ?".tr,
                 style: TextStyle(
                   color: Color.fromARGB(255, 123, 125, 127),
                 )),
@@ -137,7 +139,7 @@ class Customerloginpage extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => MapScreen()));
+                      MaterialPageRoute(builder: (context) => Navigation()));
                 },
                 child: Text(
                   'Login'.tr,

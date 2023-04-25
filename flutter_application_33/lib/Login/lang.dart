@@ -43,7 +43,7 @@ class _languageSelectionState extends State<languageSelection> {
                 primary: Colors.blueGrey,
               ),
               onPressed: () {
-                var locale = Locale('en', 'US');
+                var locale = const Locale('en', 'US');
                 Get.updateLocale(locale);
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => optionpage()));
