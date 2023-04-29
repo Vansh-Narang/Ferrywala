@@ -3,6 +3,8 @@ import 'package:flutter_application_33/bottomnav/bottomnavy.dart';
 import 'package:flutter_application_33/map/MapScreen.dart';
 import 'package:get/get.dart';
 
+import '../Services/push_noti.dart';
+
 class sellerloginpage extends StatelessWidget {
   sellerloginpage({super.key});
   final items = [
@@ -154,6 +156,8 @@ class sellerloginpage extends StatelessWidget {
               ),
               child: ElevatedButton(
                 onPressed: () async {
+                  // const token =
+                  getFirebaseMessagingToken();
                   await Navigator.push(
                       context,
                       MaterialPageRoute(

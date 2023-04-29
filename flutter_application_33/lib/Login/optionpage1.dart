@@ -3,7 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_application_33/Login/custhindi.dart';
 import 'package:flutter_application_33/Login/customer.dart';
-import 'package:flutter_application_33/Login/sigin.dart';
+import 'package:flutter_application_33/Login/sigeng.dart';
 import 'package:get/get.dart';
 // import 'package:ferry/loginpage/customer login.dart';
 // import 'package:ferry/loginpage/sellerlogin.dart';

@@ -58,9 +58,6 @@ class customerloginpage extends StatelessWidget {
               ),
             ),
           ),
-          // ElevatedButton(
-          //     onPressed: (){},
-          //     child: Text("Search")),
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.70,
             height: MediaQuery.of(context).size.height * 0.07,

@@ -32,7 +32,7 @@ class NavigationState1 extends State<Navigation1> {
       bodyScreen = Shops();
     }
     if (index == 2) {
-      bodyScreen = Order();
+      bodyScreen = Orders();
     }
   }
 
