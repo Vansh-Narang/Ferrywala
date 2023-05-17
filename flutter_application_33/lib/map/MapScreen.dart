@@ -120,22 +120,35 @@ class _MapScreenState extends State<MapScreen> {
                 querySnapshot.docs[i]['location'].longitude),
             onTap: () {
               showModalBottomSheet(
+                shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10.0))),
                 context: context,
                 builder: (context) {
                   return Column(
                     children: [
                       const SizedBox(height: 10),
+                      Column(
+                        children: const [
+                          Center(
+                            child: Text(
+                              "Order Now",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700, fontSize: 18),
+                            ),
+                          )
+                        ],
+                      ),
+                      const Divider(
+                        color: Colors.blue,
+                      ),
                       ListTile(
                         onTap: () async {
                           _makingPhoneCall(querySnapshot.docs[i]['contactno']);
                         },
-                        leading: Icon(
+                        leading: const Icon(
                           Icons.call,
                         ),
-                        title: Text("Contact"),
-                      ),
-                      SizedBox(
-                        height: 10,
+                        title: const Text("Contact"),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 16.0),
@@ -143,6 +156,7 @@ class _MapScreenState extends State<MapScreen> {
                           keyboardType: TextInputType.none,
                           controller: _date,
                           decoration: const InputDecoration(
+                            border: InputBorder.none,
                             icon: Icon(Icons.calendar_today_rounded),
                             labelText: "Select Date",
                           ),
@@ -150,7 +164,7 @@ class _MapScreenState extends State<MapScreen> {
                             DateTime? pickDate = await showDatePicker(
                                 context: context,
                                 initialDate: DateTime.now(),
-                                firstDate: DateTime(2000),
+                                firstDate: DateTime.now(),
                                 lastDate: DateTime(2101));
 
                             if (pickDate != null) {
@@ -165,23 +179,27 @@ class _MapScreenState extends State<MapScreen> {
                       SizedBox(
                         height: 10,
                       ),
-                      ElevatedButton(
-                          onPressed: () {
-                            showModalBottomSheet(
-                              context: context,
-                              builder: (context) {
-                                return Wrap(children: [
-                                  
-                                  AlertDialog(
-                                    title: Text("Order Done Successfully 🎉"),
-                                  ),
-                                ]);
-                              },
-                            );
-                          },
-                          child: Text("Order Now" +
-                              " " +
-                              querySnapshot.docs[i]['category'])),
+                      Center(
+                        child: ElevatedButton(
+                            onPressed: () {
+                              showModalBottomSheet(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(10))),
+                                context: context,
+                                builder: (context) {
+                                  return Wrap(children: [
+                                    AlertDialog(
+                                      title: Text("Order Done Successfully 🎉"),
+                                    ),
+                                  ]);
+                                },
+                              );
+                            },
+                            child: Text("Order Now" +
+                                " " +
+                                querySnapshot.docs[i]['category'])),
+                      ),
                     ],
                   );
                 },
@@ -218,23 +236,6 @@ class _MapScreenState extends State<MapScreen> {
         onMapCreated: (GoogleMapController controller) {
           mapController = controller;
         },
-        // Marker(
-        //custom marker
-        //     markerId: MarkerId("src"),
-        //     position: source,
-        //     draggable: true,
-        //     onDragEnd: (value) {
-        //       //value is new position if dragged
-        //     },
-        //     icon: BitmapDescriptor.defaultMarker),
-        // Marker(
-        //     markerId: MarkerId("Dest"),
-        //     position: dest,
-        //     draggable: true,
-        //     onDragEnd: (value) {
-        //       //value is new position if dragged
-        //     },
-        //     icon: BitmapDescriptor.defaultMarker)
       ),
     );
   }
@@ -242,6 +243,7 @@ class _MapScreenState extends State<MapScreen> {
 
 //Making Phone calls in the text button of contact us button
 _makingPhoneCall(var url) async {
+  // var newurl = Uri.parse(url);
   var url = Uri.parse("tel:9466445533");
   if (await canLaunchUrl(url)) {
     print("Calling");
