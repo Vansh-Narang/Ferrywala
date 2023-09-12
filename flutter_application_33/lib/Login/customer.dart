@@ -5,9 +5,9 @@ import '../bottomnav/bottomnavy.dart';
 
 class customerloginpage extends StatelessWidget {
   final List locale = [
-    {'name': 'ENGLISH', 'locale': Locale('en', 'US')},
-    {'name': 'ಕನ್ನಡ', 'locale': Locale('kn', 'IN')},
-    {'name': 'हिंदी', 'locale': Locale('hi', 'IN')},
+    {'name': 'ENGLISH', 'locale': const Locale('en', 'US')},
+    {'name': 'ಕನ್ನಡ', 'locale': const Locale('kn', 'IN')},
+    {'name': 'हिंदी', 'locale': const Locale('hi', 'IN')},
   ];
 
   get customerPhone => null;
@@ -23,15 +23,15 @@ class customerloginpage extends StatelessWidget {
             child: Container(
               height: MediaQuery.of(context).size.height * 0.40,
               width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   image:
                       DecorationImage(image: AssetImage('assets/vendor2.PNG'))),
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 42, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 42, vertical: 8),
             child: Text('login'.tr,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.black,
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
@@ -43,10 +43,10 @@ class customerloginpage extends StatelessWidget {
             child: TextField(
               controller: customerPhone,
               cursorColor: Colors.black,
-              style: TextStyle(color: Colors.black),
+              style: const TextStyle(color: Colors.black),
               decoration: InputDecoration(
                 hintText: "phonenumber".tr,
-                prefixIcon: Icon(Icons.phone, color: Colors.black),
+                prefixIcon: const Icon(Icons.phone, color: Colors.black),
                 labelStyle: TextStyle(color: Colors.blue.withOpacity(0.9)),
                 filled: true,
                 floatingLabelBehavior: FloatingLabelBehavior.never,
@@ -64,20 +64,20 @@ class customerloginpage extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: TextField(
-                style: TextStyle(fontSize: 18.0, color: Colors.black),
+                style: const TextStyle(fontSize: 18.0, color: Colors.black),
                 decoration: InputDecoration(
                   filled: true,
-                  fillColor: Color.fromARGB(255, 101, 130, 144),
+                  fillColor: const Color.fromARGB(255, 101, 130, 144),
                   hintText: 'username'.tr,
-                  hintStyle: TextStyle(color: Colors.white),
+                  hintStyle: const TextStyle(color: Colors.white),
                   contentPadding:
-                      EdgeInsets.only(left: 20.0, bottom: 8.0, top: 8.0),
+                      const EdgeInsets.only(left: 20.0, bottom: 8.0, top: 8.0),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.blueGrey),
+                    borderSide: const BorderSide(color: Colors.blueGrey),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: const BorderSide(color: Colors.white),
                     borderRadius: BorderRadius.circular(15),
                   ),
                 ),
@@ -90,22 +90,23 @@ class customerloginpage extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: TextField(
-                style: TextStyle(fontSize: 18.0, color: Color(0xFFbdc6cf)),
+                style:
+                    const TextStyle(fontSize: 18.0, color: Color(0xFFbdc6cf)),
                 decoration: InputDecoration(
                   filled: true,
-                  fillColor: Color.fromARGB(255, 226, 226, 226),
+                  fillColor: const Color.fromARGB(255, 226, 226, 226),
                   hintText: 'password'.tr,
-                  hintStyle:
-                      TextStyle(color: Color.fromARGB(255, 182, 182, 182)),
+                  hintStyle: const TextStyle(
+                      color: Color.fromARGB(255, 182, 182, 182)),
                   contentPadding:
-                      EdgeInsets.only(left: 20.0, bottom: 8.0, top: 8.0),
+                      const EdgeInsets.only(left: 20.0, bottom: 8.0, top: 8.0),
                   focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Color.fromARGB(255, 226, 226, 226)),
+                    borderSide: const BorderSide(
+                        color: Color.fromARGB(255, 226, 226, 226)),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: const BorderSide(color: Colors.white),
                     borderRadius: BorderRadius.circular(15),
                   ),
                 ),
@@ -113,12 +114,12 @@ class customerloginpage extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
               left: 40,
               bottom: 20,
             ),
             child: Text("forget".tr,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Color.fromARGB(255, 123, 125, 127),
                 )),
           ),
@@ -137,41 +138,29 @@ class customerloginpage extends StatelessWidget {
                         builder: (context) => Navigation1(),
                       ));
                 },
-                child: Text(
-                  'login'.tr,
-                  style: TextStyle(fontSize: 25),
-                ),
                 style: ButtonStyle(
                     foregroundColor: MaterialStateProperty.all(Colors.white),
                     backgroundColor: MaterialStateProperty.all(
-                        Color.fromARGB(255, 90, 113, 124)),
+                        const Color.fromARGB(255, 90, 113, 124)),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15)))),
+                child: Text(
+                  'login'.tr,
+                  style: const TextStyle(fontSize: 25),
+                ),
               ),
             ),
           ),
-          Row(children: <Widget>[
+          Row(children: const <Widget>[
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.only(left: 50, right: 25),
+                padding: EdgeInsets.only(left: 50, right: 25),
                 child: Divider(
                   thickness: 3,
                 ),
               ),
             ),
-            Text("or".tr,
-                style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.grey[800])),
-            Expanded(
-                child: Padding(
-              padding: const EdgeInsets.only(right: 50, left: 25),
-              child: Divider(
-                thickness: 3,
-              ),
-            )),
           ]),
         ],
       ),

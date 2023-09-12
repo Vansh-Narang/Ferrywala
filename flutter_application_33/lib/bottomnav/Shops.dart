@@ -11,12 +11,12 @@ class Shops extends StatefulWidget {
 class _ShopsState extends State<Shops> {
   @override
   Widget build(BuildContext context) {
-    final TextEditingController emailController = TextEditingController();
-    final TextEditingController posController = TextEditingController();
-    final TextEditingController nameController = TextEditingController();
-    final firestore =
-        FirebaseFirestore.instance.collection('Vendors').snapshots();
-    CollectionReference ref = FirebaseFirestore.instance.collection('Vendors');
+    // final TextEditingController emailController = TextEditingController();
+    // final TextEditingController posController = TextEditingController();
+    // final TextEditingController nameController = TextEditingController();
+    // final firestore =
+    //     FirebaseFirestore.instance.collection('Vendors').snapshots();
+    // CollectionReference ref = FirebaseFirestore.instance.collection('Vendors');
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blueGrey,
@@ -28,7 +28,7 @@ class _ShopsState extends State<Shops> {
             builder:
                 (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
               if (!snapshot.hasData) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               }
@@ -36,7 +36,7 @@ class _ShopsState extends State<Shops> {
                   itemCount: snapshot.data!.docs.length,
                   itemBuilder: (context, index) {
                     return ListTile(
-                      subtitle: Text('Bindal Juice'),
+                      subtitle: const Text('Bindal Juice'),
                       title: Text(snapshot.data!.docs[index]['company']),
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
@@ -46,7 +46,11 @@ class _ShopsState extends State<Shops> {
                               Icons.favorite,
                               color: Colors.red,
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              setState(() {
+                                Icons.favorite_border;
+                              });
+                            },
                           ),
                           Text(snapshot.data!.docs[index]['like'].length
                               .toString())
