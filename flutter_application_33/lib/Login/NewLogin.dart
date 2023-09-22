@@ -108,14 +108,14 @@ class MyWidget extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.only(
+          const SizedBox(height: 10),
+          const Padding(
+            padding: EdgeInsets.only(
               left: 46,
               bottom: 20,
             ),
             child: Text("Forgot Password ?",
-                style: const TextStyle(
+                style: TextStyle(
                   fontWeight: FontWeight.w900,
                   color: Color.fromARGB(255, 123, 125, 127),
                 )),
@@ -142,9 +142,9 @@ class MyWidget extends StatelessWidget {
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15)))),
-                child: Text(
+                child: const Text(
                   "Login Now",
-                  style: const TextStyle(fontSize: 22),
+                  style: TextStyle(fontSize: 22),
                 ),
               ),
             ),
