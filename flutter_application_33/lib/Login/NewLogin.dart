@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_33/bottomnav/bottomnavy.dart';
 import 'package:get/get.dart';
 
+import 'DetailsPage.dart';
+
 final customerPhone = TextEditingController();
 
 class MyWidget extends StatelessWidget {
@@ -128,25 +130,35 @@ class MyWidget extends StatelessWidget {
                 horizontal: 40,
               ),
               child: ElevatedButton(
-                onPressed: () async {
-                  await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Navigation1(),
-                      ));
-                },
-                style: ButtonStyle(
-                    foregroundColor: MaterialStateProperty.all(Colors.white),
-                    backgroundColor: MaterialStateProperty.all(
-                        const Color.fromARGB(255, 90, 113, 124)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15)))),
-                child: const Text(
-                  "Login Now",
-                  style: TextStyle(fontSize: 22),
-                ),
-              ),
+                  onPressed: () async {
+                    await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Navigation1(),
+                        ));
+                  },
+                  style: ButtonStyle(
+                      foregroundColor: MaterialStateProperty.all(Colors.white),
+                      backgroundColor: MaterialStateProperty.all(
+                          const Color.fromARGB(255, 90, 113, 124)),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15)))),
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => DetailsPage()),
+                      );
+                    },
+                    child: const Text(
+                      "Continue - >",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  )),
             ),
           ),
         ],
