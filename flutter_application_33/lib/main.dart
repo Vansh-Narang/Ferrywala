@@ -16,6 +16,8 @@ import 'package:flutter_application_33/map/map.dart';
 import 'package:flutter_application_33/map/sample/xyz.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
+import 'Login/NewLogin.dart';
+
 // final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 //     FlutterLocalNotificationsPlugin();
 
@@ -64,6 +66,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blueGrey,
         ),
-        home: customerloginpage());
+        home: MyWidget());
   }
 }
